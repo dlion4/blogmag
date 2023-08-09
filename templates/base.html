@@ -52,7 +52,22 @@
         {% include "common/footer.html" %}
         <!-- /footer -->
 
-        {% block aside %}{% endblock aside %}
+        {% block aside %}
+        
+        
+        
+        
+        {% endblock aside %}
+        
+        <div class="aside-panel">
+          <ul>
+              <li> <a href="{% url 'posts:posts' %}"><i class="far  fa-podium"></i><span>Politics</span></a></li>
+              <li> <a href="{% url 'posts:posts' %}"><i class="far fa-atom"></i><span>Technology</span></a></li>
+              <li> <a href="{% url 'posts:posts' %}"><i class="far fa-user-chart"></i><span>Business</span></a></li>
+              <li> <a href="{% url 'posts:posts' %}"><i class="far fa-tennis-ball"></i><span>Sports</span></a></li>
+              <li> <a href="{% url 'posts:posts' %}"><i class="far fa-flask"></i><span>Science</span></a></li>
+          </ul>
+      </div>
       </div>
       
       <!--/Wrapper-->
