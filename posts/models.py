@@ -32,13 +32,14 @@ class PostManger(models.Manager):
 
 
 class Post(models.Model):
-    writer = models.ForeignKey(Profile, on_delete=models.SET_NULL, blank=True, null=True, related_name="post_author")
+    writer = models.ForeignKey(Profile, on_delete=models.SET_NULL, blank=True, null=True, 
+    related_name="post_author")
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, blank=True, related_name="topic_posts")
     title = models.CharField(max_length=100)
     is_editors_choice = models.BooleanField(default=False)
     slug = models.SlugField(max_length=100, blank=True, null=True)
     tags = models.ManyToManyField(Tag, related_name="post_tags")
-    content = RichTextField()
+    content = RichTextField(config_name="default")
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(default=timezone.now)
     summary = models.TextField(max_length=300, blank=True, null=True, help_text="summary of the blog post")

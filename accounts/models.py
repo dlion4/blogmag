@@ -65,6 +65,7 @@ class Profile(models.Model):
     )
     phone = models.PositiveIntegerField(blank=True, null=True)
     full_name = models.CharField(max_length=300, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
     
     @property
     def username(self):
@@ -75,6 +76,9 @@ class Profile(models.Model):
     
     def __str__(self):
         return f"{self.user.email}" or f"{self.full_name}"
+    
+    def get_posts(self):
+        return self.post_author.all()
 
 
 @receiver(post_save, sender=AccountUser)

@@ -6,9 +6,11 @@ from category.models import Tag
 from .utils import get_next_or_prev
 from django.http import JsonResponse
 from posts.forms.forms import PostCommentForm
-
+from paginator.paginators import Paginator
 class HomeView(generic.TemplateView):
     template_name = "index.html"
+    # queryset = Post
+    # context
     
     def get_hero_display_posts(self, **kwargs):
         context = {
@@ -37,16 +39,14 @@ class HomeView(generic.TemplateView):
         return context
     
 
-class PostListView(generic.TemplateView):
+class PostListView(Paginator, generic.TemplateView):
     template_name = "pages/posts.html"
     queryset = Post
     context_object_name = "posts"
+    paginate_by = 10
     
-    def get_categories(self):
-        pass
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
-        context['posts'] = self.queryset.objects.all()
         return context
 
 

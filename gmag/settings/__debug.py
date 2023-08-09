@@ -6,6 +6,7 @@ LOCAL_APPS = [
     "category",
     "posts",
     "pages",
+    "writer",
 ]
 FRAMEWORK_APPS = [
     'ckeditor',
@@ -82,7 +83,8 @@ CKEDITOR_CONFIGS = {
             'dialog',
             'dialogui',
             'elementspath'
-        ]),
+        ]
+        ),
     }
 }
 

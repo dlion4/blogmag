@@ -19,13 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from . import  views
+
+
 urlpatterns = [
     path('about-us/', views.AboutUs.as_view(), name="about"),
     path('contact-us/', views.ContactUs.as_view(), name="contact"),
-    path('admin/', admin.site.urls),
+    path('lionnic-admin-login/', admin.site.urls),
     path('', include("posts.urls", namespace="posts")),
     path('category/', include("category.urls", namespace="category")),
     path("accounts/", include("accounts.urls", namespace="accounts")),
+    path("writer/", include("writer.urls", namespace="writer")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
@@ -34,3 +37,9 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "handlers.views.handler404"
 handler500 = "handlers.views.handler500"
+
+
+
+admin.site.site_header  =  "Lionnic Margazone"  
+admin.site.site_title  =  "Lionnic Margazone Admin Site"
+admin.site.index_title  =  "Lionnic Margazone Admin Site"

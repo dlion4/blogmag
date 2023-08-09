@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from posts.forms.admin import PostAdminForm
 # Register your models here.
 from posts.models import (
     Post,
@@ -15,6 +15,7 @@ class PostImageInline(admin.StackedInline):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+    form = PostAdminForm
     list_display=['writer',"topic","title","createdAt","updatedAt",
                  "views","comments"]
     prepopulated_fields = {"slug": ("title", )}

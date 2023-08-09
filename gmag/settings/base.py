@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-@=w^3*3_n-(5e9^nnr-a1ra28b6utam708e^)51491ns4e@i-9"
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -36,6 +36,10 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    # General use templates & template tags (should appear first)
+    'adminlte3',
+     # Optional: Django admin theme (must be before django.contrib.admin)
+    'adminlte3_theme',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -69,7 +73,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'gmag.context_processor.get_categories',
-            
+                # "writer.context.processors.get_profile"
             ],
         },
     },
