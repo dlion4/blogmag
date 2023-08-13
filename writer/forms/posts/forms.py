@@ -12,9 +12,6 @@ class PostForm(forms.ModelForm):
             "summary","image","bg_image",
         ]
         widgets = {
-            "content":CKEditorWidget(config_name="default"),
-           
-            # "topic":forms.Select(choices=Topic.objects.all(), attrs={"class": "form-select"}),
-            
+            "content":CKEditorWidget(config_name="default"),            
         }
 
