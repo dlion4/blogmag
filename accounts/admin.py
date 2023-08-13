@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import AccountUser, Profile
+from .models import AccountUser, Profile, Social
 
 
 @admin.register(AccountUser)
@@ -14,6 +14,7 @@ class CustomUserAdmin(UserAdmin):
         "email",
         "is_staff",
         "is_active",
+        
     )
     list_filter = (
         "email",
@@ -48,6 +49,23 @@ class CustomUserAdmin(UserAdmin):
     ordering = ("email",)
 
 
+def _make_public(modelname, request, queryset):
+    queryset.update(is_public=True)
+
+_make_public.short_description="Make Profile Public"
+
+
+class SocialInline(admin.StackedInline):
+    model = Social
+    extra = 0
+
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display=['user', "phone", "full_name", "username"]
+    list_display=['user', "phone", "full_name", "username", "is_public"]
+    actions = (
+        _make_public,
+    )
+    inlines = (
+        SocialInline,
+    )

@@ -37,7 +37,7 @@ class LoginView(generic.TemplateView):
                 obj = user.check_password(password)
                 if obj:
                     login(request, user)
-                    return redirect("assignments:home")
+                    return redirect("dashboard:home")
 
         except AccountUser.DoesNotExist:
             context["InvalidCredentials"] = "Invalid Email Address"

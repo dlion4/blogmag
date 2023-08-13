@@ -4,5 +4,5 @@ from . import views
 app_name = "writer"
 
 urlpatterns = [
-    path("posts/", include("writer.writer_urls.posts_urls")),
+    path("<int:pk>/", views.WriterProfileView.as_view(), name="writer_view"),
 ]

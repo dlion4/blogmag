@@ -58,7 +58,8 @@
                                             <div class="grid-post-item  bold_gpi  fl-wrap">
                                                 <div class="grid-post-media gpm_sing">
                                                     <div class="bg" data-bg="{% if post.bg_image %}{{post.bg_image.url}}{% else %}{{post.image.url}}{% endif %}"></div>
-                                                    <div class="author-link"><a href=""><img src="{% static 'images/avatar/2.jpg' %}" alt="">  <span>By Mark Rose</span></a></div>
+                                                    <div class="author-link"><a href="{{ post.writer.get_absolute_url }}">
+                                                        <img src="{% if post.writer.avatar %}{{ post.writer.avatar.url }}{% else %}{% static 'images/avatar/2.jpg' %}{% endif %}" alt="">  <span>By Mark Rose</span></a></div>
                                                     <div class="grid-post-media_title">
                                                         <a class="post-category-marker" href="">{{post.category|upper}}</a>
                                                         <h4><a href="{{post.get_absolute_url}}">{{post.title|title|truncatewords:"20"}}</a></h4>

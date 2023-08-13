@@ -31,7 +31,8 @@
                                 <li><i class="far fa-comments-alt"></i> {{best_post.comments}} </li>
                                 <li><i class="fal fa-eye"></i>  {{best_post.views}} </li>
                             </ul>
-                            <div class="author-link"><a href=""><img src="{% static 'images/avatar/1.jpg' %}" alt="">  
+                            <div class="author-link"><a href="{{ best_post.writer.get_absolute_url }}">
+                                <img src="{% if best_post.writer.avatar %}{{ best_post.writer.avatar.url }}{% else %}{% static 'images/avatar/1.jpg' %}{% endif %}" alt="">
                                 <span>By {{best_post.writer.username}}</span></a></div>
                         </div>
                     </div>
@@ -67,12 +68,14 @@
                                     <a class="post-category-marker" href="#">{{post.category|upper}}</a>
                                     <h3><a href="{{post.get_absolute_url}}">{{post.title|truncatewords:"10"}}</a></h3>
                                     <span class="post-date"><i class="far fa-clock"></i> {{post.createdAt|date:"d M Y"}}</span>
-                                    <p>{{post.summary|truncatewords:"50"}}</p>
+                                    <p>{{post.summary|truncatewords:"20"}}</p>
                                     <ul class="post-opt">
                                         <li><i class="far fa-comments-alt"></i> {{post.comments}} </li>
                                         <li><i class="fal fa-eye"></i>  {{post.views}} </li>
                                     </ul>
-                                    <div class="author-link"><a href=""><img src="{% static 'images/avatar/1.jpg' %}" alt="">  <span>By {{post.writer.username}}</span></a></div>
+                                    <div class="author-link"><a href="{{ post.writer.get_absolute_url }}">
+                                        <img src="{% if post.writer.avatar %}{{ post.writer.avatar.url }}{% else %}{% static 'images/avatar/1.jpg' %}{% endif %}" alt="">
+                                        <span>By {{post.writer.username}}</span></a></div>
                                 </div>
                             </div>
                             <!--list-post end-->

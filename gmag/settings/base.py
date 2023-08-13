@@ -30,16 +30,16 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "http://127.0.0.1:8000"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     # General use templates & template tags (should appear first)
-    'adminlte3',
+    # 'adminlte3',
      # Optional: Django admin theme (must be before django.contrib.admin)
-    'adminlte3_theme',
+    # 'adminlte3_theme',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -73,7 +73,8 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 'gmag.context_processor.get_categories',
-                # "writer.context.processors.get_profile"
+                # "writer.context.processors.get_profile",
+                "dashboard.context_processors.get_dashboard_popular",
             ],
         },
     },

@@ -56,23 +56,25 @@
       <div class="search_btn htact show_search-btn">
         <i class="far fa-search"></i> <span class="header-tooltip">Search</span>
       </div>
-      <div class="srf_btn htact show-reg-form">
+      <div  class="srf_btn htact show-reg-form">
         <i class="fal fa-user"></i> <span class="header-tooltip">Sign In</span>
       </div>
      
       <!-- header-search-wrap -->
       <div class="header-search-wrap novis_sarch">
         <div class="widget-inner">
-          <form action="#">
+          <form action="{% url 'posts:search' %}" id="lionnic_qs_form">
+              {% csrf_token %}
             <input
-              name="se"
-              id="se"
-              type="text"
-              class="search"
-              placeholder="Search..."
-              value=""
+                    title="lionnic_qs"
+                    name="lionnic_qs"
+                    id="lionnic_qs"
+                    type="search"
+                    class="search"
+                    placeholder="Search..."
+                    value=""
             />
-            <button type="button" title="search" class="search-submit" id="submit_btn">
+            <button type="submit" title="search" class="search-submit" id="submit_btn">
               <i class="fa fa-search transition"></i>
             </button>
           </form>

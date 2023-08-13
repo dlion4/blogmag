@@ -24,8 +24,11 @@
                         <li><i class="far fa-comments-alt"></i> {{post.comments}} </li>
                         <li><i class="fal fa-eye"></i>  {{post.views}} </li>
                     </ul>
-                    <div class="author-link"><a href=""><img src="{% static 'images/avatar/1.jpg' %}" alt=""> 
-                         <span>By {{post.writer.username}}</span></a></div>
+                    <div class="author-link"><a href="{{ post.writer.get_absolute_url }}">
+                        <img src="{% if post.writer.avatar %}{{ post.writer.avatar.url }}{% else %}{% static 'images/avatar/1.jpg' %}{% endif %}" alt="">
+                         <span>By {{post.writer.username}}</span>
+                    </a>
+                    </div>
                 </div>
             </div>
             <!--list-post end-->	

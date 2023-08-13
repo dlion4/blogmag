@@ -89,5 +89,20 @@
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
+
+  <script>
+
+      const windowLocation = window.location.href
+      const searchInput = document.getElementById("lionnic_qs")
+      const searchForm = document.getElementById("lionnic_qs_form")
+      const resultBox = document.getElementById("lionnic_result")
+      const csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value
+      console.log(csrfToken)
+
+
+      searchInput.addEventListener("keyup", function (e){
+          console.log(e.target.value)
+      })
+  </script>
   </body>
 </html>

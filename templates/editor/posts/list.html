@@ -19,7 +19,7 @@
                             </a>
                             <span class="post-media_title">&copy; Image Copyrights Title</span>
                         </div>
-                        <a class="post-category-marker purp-bg" href="{% url 'writer:post_edit' post.pk post.slug %}">EDIT POST</a>
+                        <a class="post-category-marker purp-bg" href="javascript:void (0);">{{ post.topic.sub_category.category.name }}</a>
                         <div class="grid-post-content">
                             <h3><a href="{{post.get_absolute_url}}">{{post.title|title|truncatewords:"20"}}</a></h3>
                             <span class="post-date"><i class="far fa-clock"></i>  {{post.createdAt|date:"d M Y"}}</span>
@@ -43,7 +43,7 @@
         <!--grid-post-wrap end-->
         <div class="clearfix"></div>
         <div class="load-more_btn"><i class="fal fa-undo"></i>
-            <a style="color:white" href="{% url 'writer:post_create' %}">Create New</a>
+{#            <a style="color:white" href="">Create New</a>#}
         </div>
         <!--pagination-->
         <!-- <div class="pagination">
